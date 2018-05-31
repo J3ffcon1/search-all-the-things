@@ -9,10 +9,10 @@ export default class App extends Component {
 
     render() {
 
-        const { title } = this.state;
+        const title = this.state;
 
         return (
-            <div className={styles.app}>
+            <div>
             <header>
                 <Search onSearch={this.handleSearch}/>
             </header>
