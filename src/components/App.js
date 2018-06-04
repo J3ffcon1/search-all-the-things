@@ -3,6 +3,7 @@ import Search from './Search';
 import logo from '../../assets/Google-books-logo.png';
 import styles from './App.css';
 import Books from '../components/Books';
+import Paging from '../components/Paging';
 
 export default class App extends Component {
 
@@ -62,14 +63,14 @@ export default class App extends Component {
                         {loading && <div>Loading ...</div>}
                         {error && <div>Error : {error.message}</div>}
                     </section>
-                    {/* <section>
+                    <section>
                         <Paging     
                         totalResults = {totalResults}
                         page={page}
                         perPage={perPage}
                         onPage={this.handlePage}/>
                         <Books books={books}/>
-                        </section> */}
+                        </section>
                 </main>
             </div>
         )
