@@ -1,5 +1,5 @@
 const BASE_URL = 'https://www.googleapis.com/books/v1';
-const BOOKVOLUMES_URL = `${BASE_URL}/volumes?`;
+const BOOKVOLUMES_URL = `https://www.googleapis.com/books/v1/volumes?q=harrypotter`;
 const SORT_QUERY = 'orderBy=relevance';
 
 const throwJson = json => { throw json; };
