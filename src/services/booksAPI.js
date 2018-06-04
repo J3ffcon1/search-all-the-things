@@ -8,16 +8,11 @@ const get = url => fetch(url)
 
 export function search({ topic, sources = ['bad'] }, { page = 1, pageSize = 10 }) {
     
-    const maxResults = `&maxResults=${pageSize}`;
     const bookIndex = (page * pageSize) - pageSize;
-    const startIndex = `&startIndex=${bookIndex}`;
     const search = `&q=${topic}&sources=${sources.join()}`;
-    const paging = `&maxResults=${maxResults}&startIndex=${startIndex}`;
+    const maxResults = `&maxResults=${pageSize}`;
     const sort = `&${SORT_QUERY}`;
+    const startIndex = `&startIndex=${bookIndex}`;
 
     return get(`${BOOKVOLUMES_URL}${search}${maxResults}${sort}${startIndex}`);
 }
-
-export function getSources() {
-    return get(SOURCES_URL).then(r => r.sources);
-  }
