@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import{ search } from '../services/booksAPI';
 import Search from './Search';
 import logo from '../../assets/Google-books-logo.png';
 import styles from './App.css';
@@ -54,7 +55,7 @@ export default class App extends Component {
                         <h1>Google Book Search</h1>
                         {/* <img src = {logo}/> */}
                     </div>
-                    <div clasName="search-container">
+                    <div className="search-container">
                         <Search onSearch={this.handleSearch} />
                     </div>
                 </header>
