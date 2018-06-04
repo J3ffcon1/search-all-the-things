@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import{ search } from '../services/booksAPI';
+import { search } from '../services/booksAPI';
 import Search from './Search';
-import logo from '../../assets/Google-books-logo.png';
-import styles from './App.css';
-import Books from '../components/Books';
-import Paging from '../components/Paging';
+// import logo from '../../assets/Google-books-logo.png';
+// import styles from './App.css';
+import Books from './Books';
+import Paging from './Paging';
 
 export default class App extends Component {
 
@@ -14,7 +14,7 @@ export default class App extends Component {
         error: null,
         totalResults: 0,
         page: 1,
-        perPage: 20,
+        perPage: 10,
         books: [],
         startIndex: 0,
         searched: false,
@@ -26,8 +26,12 @@ export default class App extends Component {
         this.setState({ loading: true });
 
         search({ topic }, { page, perPage })
-            .then(({ books, totalResults }) => {
-                this.setState({ books, totalResults, error: null });
+            .then(({ totalResults, books }) => {
+                if(!totalResults) {
+                    this.setState({ error: 'No Results found!'});
+                } else{
+                this.setState({ books, totalResults, error: null, searched: true });
+                }
             }, error => {
                 this.setState({ error });
             })
@@ -36,7 +40,7 @@ export default class App extends Component {
     };
 
     handleSearch = ({ search }) => {
-        this.setState({ topic: search }, this.searchBooks);
+        this.setState({ topic: search, page: 1, error: null }, this.searchBooks);
     };
 
     handlePage = ({ page }) => {
@@ -45,7 +49,7 @@ export default class App extends Component {
 
     render() {
 
-        const { books, loading, totalResults, page, perPage, error } = this.state;
+        const { topic, loading, error, totalResults, page, perPage, books, startIndex, searched } = this.state;
 
 
         return (
@@ -63,6 +67,7 @@ export default class App extends Component {
                     <section className="main-container">
                         {loading && <div>Loading ...</div>}
                         {error && <div>Error : {error.message}</div>}
+                        <p>Results for: {topic}</p>
                     </section>
                     <section>
                         <Paging     

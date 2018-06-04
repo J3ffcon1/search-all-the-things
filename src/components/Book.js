@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 export default class Book extends Component {
 
     render() {
-        const { title, author, description, publishedOn, url, urlToImage } = this.props.book;
+        const { title, author, description, } = this.props.book;
 
         return (
             <li>
                 <h2>{title} by {author} </h2>
-                <a href={url} target="_blank">view book</a>
+                {/* <a href={url} target="_blank">view book</a> */}
                 <p>{description}</p>
-                <img src={urlToImage} />
+                {/* <img src={urlToImage} /> */}
             </li>
-        )
+        );
     }
 }
