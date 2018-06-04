@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import  Search  from './Search';
 import logo from '../../assets/Google-books-logo.png';
+import styles from './App.css';
 
 export default class App extends Component {
 
