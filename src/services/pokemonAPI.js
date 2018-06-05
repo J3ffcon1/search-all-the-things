@@ -10,7 +10,7 @@ export function search({ topic }, { page = 1, pageSize = 10 }){
 //   const search = `${name}`;
   const paging = `/?qlimit=${page}&offset=${pageSize}`;
   // const sort = `${SORT_QUERY}`
-  return get(`${BASE_URL}${topic}${paging}`);
+  return get(`${BASE_URL}${topic}`);
 }
 
 // export function allPokemon() => {
