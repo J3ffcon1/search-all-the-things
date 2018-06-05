@@ -4,17 +4,19 @@ import Pokemon from './Pokemon';
 
 export default class Pokemons extends Component {
 
-render () {
+  render() {
+    //eslint-disable-next-line
     const { pokemons } = this.props;
-
+    //eslint-disable-next-line
+    console.log('i was here', pokemons);
+    
     return (
-        <ul>
-            {/* TODO: create unordered list of individual pokemon */}
-            {/* {pokemons.map((pokemon, i) => {
-                <Pokemon key = {i} pokemon={pokemon}/>
-            })} */}
-        </ul>
-    )
-}
+      <ul>
+        {pokemons.map((pokemon, i) => {
+          <Pokemon key={i} pokemon={pokemon}/>; 
+        })}
+      </ul>
+    );
+  }
 
 }

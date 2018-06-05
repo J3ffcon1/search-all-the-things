@@ -1,17 +1,20 @@
-const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
+// const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
+const STOCK_URL = 'http://pokeapi.salestock.net/api/v2/pokemon/';
 // const PIKA_URL = `${BASE_URL}/pikachu`;
 // const SORT_QUERY = `sortBy=id`;
 
 const throwJson = json => { throw json; };
 const get = url => fetch(url)
-    .then(r => r.ok ? r.json() : r.json().then(throwJson));
+  .then(r => r.ok ? r.json() : r.json().then(throwJson));
 
-export function search({ name }) {
-    const search = `${name}`;
-    // const paging = `/?qlimit=${page}&offset=${pageSize}`;
-    // const sort = `${SORT_QUERY}`
-    console.log(`${name}`);
-    return get(`${BASE_URL}${search}`);
+export function search({ topic }, { page = 1, pageSize = 10 }){
+//   const search = `${name}`;
+  //need paging for parameter variables.
+  //eslint-disable-next-line
+  const paging = `/?qlimit=${page}&offset=${pageSize}`;
+  // const sort = `${SORT_QUERY}`
+  // return get(`${BASE_URL}${topic}`);
+  return get(`${STOCK_URL}${topic}`);
 }
 
 // export function allPokemon() => {
