@@ -4,14 +4,13 @@ const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
 const throwJson = json => { throw json; };
 const get = url => fetch(url)
-    .then(r => r.ok ? r.json() : r.json().then(throwJson));
+  .then(r => r.ok ? r.json() : r.json().then(throwJson));
 
-export function search({ name }) {
-    const search = `${name}`;
-    // const paging = `/?qlimit=${page}&offset=${pageSize}`;
-    // const sort = `${SORT_QUERY}`
-    console.log(`${name}`);
-    return get(`${BASE_URL}${search}`);
+export function search({ topic }, { page = 1, pageSize = 10 }){
+//   const search = `${name}`;
+  const paging = `/?qlimit=${page}&offset=${pageSize}`;
+  // const sort = `${SORT_QUERY}`
+  return get(`${BASE_URL}${topic}`);
 }
 
 // export function allPokemon() => {
