@@ -1,0 +1,42 @@
+.search-button { 
+  
+  /* put the height and width of your image here */
+  height: 27px;
+  width: 100px;
+  border: none;
+  border: solid #CC0000;
+  background: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+
+
+}
+
+input {
+    
+    transition: all 0.30s ease-in-out;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #CC0000;
+}
+
+input:focus {
+  box-shadow: 0 0 5px #CC0000;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #3B4CCA;
+}
+
+.search-button:hover {
+    background-color: #CC0000;
+     transition: all 0.30s ease-in-out;
+     -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+}

@@ -1,0 +1,9 @@
+#results {
+    text-align: center;
+    font-weight: 500;
+}
+
+#empty {
+    padding-left: 30px;
+    height: 45px;
+}

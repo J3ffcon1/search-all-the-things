@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { search } from '../services/booksAPI';
+import Pokemons from './Pokemons';
 import Search from './Search';
-// import logo from '../../assets/Google-books-logo.png';
-// import styles from './App.css';
-import Books from './Books';
+import { search } from '../services/pokemonAPI';
 import Paging from './Paging';
+import logo from '../../assets/Pokeball.png';
+import styles from '../styles/App.css';
 
 export default class App extends Component {
 
@@ -14,24 +14,18 @@ export default class App extends Component {
         error: null,
         totalResults: 0,
         page: 1,
-        perPage: 10,
-        books: [],
-        startIndex: 0,
-        searched: false,
+        perPage: 4,
+        pokemon: []
     };
 
-    searchBooks = () => {
+    searchPokemon = () => {
         const { topic, page, perPage } = this.state;
 
         this.setState({ loading: true });
 
-        search({ topic }, { page, perPage })
-            .then(({ totalResults, books }) => {
-                if(!totalResults) {
-                    this.setState({ error: 'No Results found!'});
-                } else{
-                this.setState({ books, totalResults, error: null, searched: true });
-                }
+        search({ topic })
+            .then((body) => {
+                this.setState({ pokemon, totalResults, error: null });
             }, error => {
                 this.setState({ error });
             })
@@ -40,46 +34,50 @@ export default class App extends Component {
     };
 
     handleSearch = ({ search }) => {
-        this.setState({ topic: search, page: 1, error: null }, this.searchBooks);
+        this.setState({ topic: search }, this.searchPokemon);
     };
 
     handlePage = ({ page }) => {
-        this.setState({ page }, this.searchBooks);
+        this.setState({ page }, this.searchPokemon);
     }
 
     render() {
-
-        const { topic, loading, error, totalResults, page, perPage, books, startIndex, searched } = this.state;
-
+        const { pokemon, loading, totalResults, page, perPage, error } = this.state;
 
         return (
-            <div>
+            <div id="body">
+                <div id= "body-container">
                 <header>
                     <div className="header-container">
-                        <h1>Google Book Search</h1>
-                        {/* <img src = {logo}/> */}
+                        <img src={logo} />
+                        <h1>Search Pokemon API</h1>
                     </div>
                     <div className="search-container">
                         <Search onSearch={this.handleSearch} />
                     </div>
                 </header>
                 <main>
-                    <section className="main-container">
-                        {loading && <div>Loading ...</div>}
-                        {error && <div>Error : {error.message}</div>}
-                        <p>Results for: {topic}</p>
+                    <section className="notifications">
+                        {loading && <div>Loading...</div>}
+                        {error && <div>{error.message}</div>}
                     </section>
                     <section>
-                        <Paging     
-                        totalResults = {totalResults}
-                        page={page}
-                        perPage={perPage}
-                        onPage={this.handlePage}/>
-                        <Books books={books}/>
-                        </section>
+                        <br />
+                        <Paging
+                            totalResults={totalResults}
+                            page={page}
+                            perPage={perPage}
+                            onPage={this.handlePage}
+                        />
+                        <Pokemons pokemon={pokemon} />
+                    </section>
                 </main>
+                </div>
             </div>
-        )
+
+        );
     }
 
 }
+
+
