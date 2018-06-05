@@ -23,8 +23,8 @@ export default class App extends Component {
 
       this.setState({ loading: true });
 
-      search({ topic })
-        .then((body) => {
+      search({ topic  }, { page, perPage })
+        .then(({ pokemon, totalResults }) => {
           this.setState({ pokemon, totalResults, error: null });
         }, error => {
           this.setState({ error });
