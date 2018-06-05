@@ -1,4 +1,4 @@
-:local(.paging){
+
 
     #results {
         text-align: center;
@@ -9,4 +9,3 @@
         padding-left: 30px;
         height: 45px;
     }
-}
