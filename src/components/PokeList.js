@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Pokemon from './Pokemon';
 // import Styles from './PokeList.css';
 
-const PokeList = () => {
-    return (
-        <section className="poke-list">
-        </section>
-    )
-}
+// export default class PokeList extends Component {
 
-export default PokeList;
+//     render() {
+//         const { pokelist } = this.props;
+    
+
+//     return (
+//         // <ul>
+//         //     {pokelist.map((Pokemon,) => {
+//         //         <Pokemon key ={i} pokelist={pokelist}/>
+//         //     })}
+//         // </ul>
+//     )
+
+//     }
+
+// }

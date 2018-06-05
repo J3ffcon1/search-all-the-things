@@ -1,18 +1,22 @@
 const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
-const PIKA_URL = `${BASE_URL}/pikachu`;
-const SORT_QUERY = `sortBy=id`;
+// const PIKA_URL = `${BASE_URL}/pikachu`;
+// const SORT_QUERY = `sortBy=id`;
 
 const throwJson = json => { throw json; };
 const get = url => fetch(url)
     .then(r => r.ok ? r.json() : r.json().then(throwJson));
 
-export function search({ name }, {page = 1, pageSize = 10 }) {
-    const search = `?q=${name}`;
-    const paging = `&page=${page}&pageSize=${pageSize}`;
-    const sort = `${SORT_QUERY}`
+export function search({ name = null }) {
+    const search = `${name}`;
+    // const paging = `/?qlimit=${page}&offset=${pageSize}`;
+    // const sort = `${SORT_QUERY}`
 
-    return get(`${BASE_URL}${search}${paging}${sort}`);
+    return get(`${BASE_URL}${search}`);
 }
+
+// export function allPokemon() => {
+//     //get base_url
+// }
 
 
 // const SORT_QUERY = 'orderBy=relevance';

@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import PokeList from './PokeList';
 import Search from './Search';
 import { search } from '../services/pokemonAPI';
+import Paging from './Paging';
 // import './App.css';
 
 export default class App extends Component {
 
     state = {
-        topic: '',
+        name: '',
         loading: false,
         error: null,
         totalResults: 0,
@@ -19,11 +20,11 @@ export default class App extends Component {
 
 
     searchPokeList = () => {
-        const { topic, page, perPage } = this.state;
+        const { name } = this.state;
 
         this.setState({ loading: true });
 
-        search({ topic }, { page, perPage })
+        search({ name })
             .then(({ pokemon, totalResults }) => {
                 this.setState({ pokemon, totalResults, error: null });
             }, error => {
@@ -32,7 +33,7 @@ export default class App extends Component {
     };
 
     handleSearch = ({ search }) => {
-        this.setState({ topic: search }, this.searchPokeList);
+        this.setState({ name: search }, this.searchPokeList);
     };
 
     handlePage = ({ page }) => {
@@ -41,7 +42,8 @@ export default class App extends Component {
 
     render() {
 
-        const { pokemon, loading, totalResults, page, perPage, error } = this.state;
+        const { pokemon } = this.state;
+        // const { pokemon, loading, totalResults, page, perPage, error } = this.state;
         return (
             <div>
                 <header>
@@ -49,21 +51,27 @@ export default class App extends Component {
                         <h1>Search the Pokemon API</h1>
                     </div>
                     <div className="search-container">
-                        <Search onSearch={this.handleSearch}/>
-                        </div>
+                        <Search onSearch={this.handleSearch()} />
+                    </div>
                 </header>
 
-                    <div className="Paging">
-                        {/* Insert paging buttons and functionality */}
-                    </div>
+                <div className="Paging">
+                    <section>
+                        <Paging
+                            totalResults={totalResults}
+                            page={page}
+                            perPage={perPage}
+                            onPage={this.handlePage} />
+                    </section>
+                </div>
 
-                    <div className="App">
-                        {/* Our pokemonList! Plus our pokemon! (Pokemonlist relies on Pokemon to populate it) */}
-                        <PokeList />
-                    </div>
+                <div className="App">
+                    {/* Our pokemonList! Plus our pokemon! (Pokemonlist relies on Pokemon to populate it) */}
+                    <PokeList />
+                </div>
             </div>
 
-                );
-            }
-        }
-        
+        );
+    }
+}
+
