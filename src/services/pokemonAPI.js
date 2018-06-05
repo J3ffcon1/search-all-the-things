@@ -6,11 +6,11 @@ const throwJson = json => { throw json; };
 const get = url => fetch(url)
     .then(r => r.ok ? r.json() : r.json().then(throwJson));
 
-export function search({ name = null }) {
+export function search({ name }) {
     const search = `${name}`;
     // const paging = `/?qlimit=${page}&offset=${pageSize}`;
     // const sort = `${SORT_QUERY}`
-
+    console.log(`${name}`);
     return get(`${BASE_URL}${search}`);
 }
 

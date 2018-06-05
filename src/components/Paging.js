@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import styles from '../styles/Paging.css'
+import logo from '../../assets/empty-pokeball.png';
+
 
 export default class Paging extends Component {
 
@@ -10,7 +13,7 @@ export default class Paging extends Component {
     render() {
         const { totalResults, page, perPage } = this.props;
 
-        if (!totalResults) return <div> no pokemon found!</div>;
+        if (!totalResults) return <div id = "results"> no pokemon found!<img id ="empty" src= {logo}/></div>;
 
         const totalPages = Math.ceil(totalResults / perPage);
         return (

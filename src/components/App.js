@@ -1,77 +1,83 @@
 import React, { Component } from 'react';
-import PokeList from './PokeList';
+import Pokemons from './Pokemons';
 import Search from './Search';
 import { search } from '../services/pokemonAPI';
 import Paging from './Paging';
-// import './App.css';
+import logo from '../../assets/Pokeball.png';
+import styles from '../styles/App.css';
 
 export default class App extends Component {
 
     state = {
-        name: '',
+        topic: '',
         loading: false,
         error: null,
         totalResults: 0,
         page: 1,
-        perPage: 20,
+        perPage: 4,
         pokemon: []
     };
 
-
-
-    searchPokeList = () => {
-        const { name } = this.state;
+    searchPokemon = () => {
+        const { topic, page, perPage } = this.state;
 
         this.setState({ loading: true });
 
-        search({ name })
-            .then(({ pokemon, totalResults }) => {
+        search({ topic })
+            .then((body) => {
                 this.setState({ pokemon, totalResults, error: null });
             }, error => {
                 this.setState({ error });
-            }).then(() => this.setState({ loading: false }));
+            })
+            .then(() => this.setState({ loading: false }));
+
     };
 
     handleSearch = ({ search }) => {
-        this.setState({ name: search }, this.searchPokeList);
+        this.setState({ topic: search }, this.searchPokemon);
     };
 
     handlePage = ({ page }) => {
-        this.setState({ page }, this.searchPokeList);
-    };
+        this.setState({ page }, this.searchPokemon);
+    }
 
     render() {
+        const { pokemon, loading, totalResults, page, perPage, error } = this.state;
 
-        const { pokemon } = this.state;
-        // const { pokemon, loading, totalResults, page, perPage, error } = this.state;
         return (
-            <div>
+            <div id="body">
+                <div id= "body-container">
                 <header>
                     <div className="header-container">
-                        <h1>Search the Pokemon API</h1>
+                        <img src={logo} />
+                        <h1>Search Pokemon API</h1>
                     </div>
                     <div className="search-container">
-                        <Search onSearch={this.handleSearch()} />
+                        <Search onSearch={this.handleSearch} />
                     </div>
                 </header>
-
-                <div className="Paging">
+                <main>
+                    <section className="notifications">
+                        {loading && <div>Loading...</div>}
+                        {error && <div>{error.message}</div>}
+                    </section>
                     <section>
+                        <br />
                         <Paging
                             totalResults={totalResults}
                             page={page}
                             perPage={perPage}
-                            onPage={this.handlePage} />
+                            onPage={this.handlePage}
+                        />
+                        <Pokemons pokemon={pokemon} />
                     </section>
-                </div>
-
-                <div className="App">
-                    {/* Our pokemonList! Plus our pokemon! (Pokemonlist relies on Pokemon to populate it) */}
-                    <PokeList />
+                </main>
                 </div>
             </div>
 
         );
     }
+
 }
+
 

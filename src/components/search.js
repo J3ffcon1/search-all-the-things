@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from '../styles/Search.css';
 
 export default class Search extends Component {
 
@@ -21,10 +22,10 @@ export default class Search extends Component {
         return (
             <form className = "search-form" onSubmit={event => this.handleSubmit(event)}>
                 <label>
-                    Search for: &nbsp;
+                    Search by name: &nbsp;
                     <input value={search} onChange={this.handleChange}/>
                 </label>
-                <button>Find</button>
+                <button className = "search-button">Find</button>
 
                 </form>
         );
