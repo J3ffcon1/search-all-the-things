@@ -1,9 +1,12 @@
-#results {
-    text-align: center;
-    font-weight: 500;
-}
+:local(.paging){
 
-#empty {
-    padding-left: 30px;
-    height: 45px;
+    #results {
+        text-align: center;
+        font-weight: 500;
+    }
+
+    #empty {
+        padding-left: 30px;
+        height: 45px;
+    }
 }

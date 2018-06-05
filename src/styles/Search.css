@@ -1,3 +1,5 @@
+:local(.Search) {
+
 .search-button { 
   
   /* put the height and width of your image here */
@@ -39,4 +41,5 @@ input:focus {
     -ms-transition:.5s;
     -moz-transition:.5s;
     -webkit-transition:.5s;
+}
 }

@@ -13,6 +13,7 @@ export default class Search extends Component {
 
     handleSubmit = event => {
       event.preventDefault();
+      //eslint-disable-next-line
       this.props.onSearch(this.state);
     };
 
@@ -20,14 +21,16 @@ export default class Search extends Component {
       const { search } = this.state;
 
       return (
-        <form className = "search-form" onSubmit={event => this.handleSubmit(event)}>
-          <label>
+        <div className = {styles.search}>
+          <form className = "search-form" onSubmit={event => this.handleSubmit(event)}>
+            <label>
                     Search by name: &nbsp;
-            <input value={search} onChange={this.handleChange}/>
-          </label>
-          <button className = "search-button">Find</button>
+              <input value={search} onChange={this.handleChange}/>
+            </label>
+            <button className = "search-button">Find</button>
 
-        </form>
+          </form>
+        </div>
       );
     }
 

@@ -8,6 +8,8 @@ const get = url => fetch(url)
 
 export function search({ topic }, { page = 1, pageSize = 10 }){
 //   const search = `${name}`;
+  //need paging for parameter variables.
+  //eslint-disable-next-line
   const paging = `/?qlimit=${page}&offset=${pageSize}`;
   // const sort = `${SORT_QUERY}`
   return get(`${BASE_URL}${topic}`);

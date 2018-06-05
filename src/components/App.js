@@ -47,7 +47,7 @@ export default class App extends Component {
       const { pokemons, loading, error, totalResults, page, perPage } = this.state;
 
       return (
-        <div id="body">
+        <div className={styles.body}>
           <div id= "body-container">
             <header>
               <div className="header-container">
