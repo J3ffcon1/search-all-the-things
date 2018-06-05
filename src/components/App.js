@@ -25,6 +25,7 @@ export default class App extends Component {
 
       search({ topic }, { page, perPage })
         .then((body) => {
+          //eslint-disable-next-line
           console.log('results are:', body);
           this.setState({ pokemons: [...this.state.pokemons, body], totalResults: body.length, error: null });
         }, error => {
@@ -43,7 +44,7 @@ export default class App extends Component {
     };
 
     render() {
-      const { pokemons, loading, error } = this.state;
+      const { pokemons, loading, error, totalResults, page, perPage } = this.state;
 
       return (
         <div id="body">
@@ -65,12 +66,12 @@ export default class App extends Component {
               <section>
                 <br />
                 <Pokemons pokemons={pokemons} />
-                {/* <Paging
+                <Paging
                   totalResults={totalResults}
                   page={page}
                   perPage={perPage}
                   onPage={this.handlePage}
-                /> */}
+                />
               </section>
             </main>
           </div>

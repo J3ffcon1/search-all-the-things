@@ -7,6 +7,7 @@ export default class Pokemons extends Component {
   render() {
     //eslint-disable-next-line
     const { pokemons } = this.props;
+    //eslint-disable-next-line
     console.log('i was here', pokemons);
     
     return (

@@ -7,6 +7,7 @@ export default class Pokemon extends Component {
   render() {
     //eslint-disable-next-line
     const { id, name, sprites, types } = this.props;
+    //eslint-disable-next-line
     console.log('this is id: ', id);
 
     return (
