@@ -26,7 +26,7 @@ export default class App extends Component {
       search({ topic }, { page, perPage })
         .then((body) => {
           console.log('results are:', body);
-          this.setState({ pokemon: body, totalResults: body.length, error: null });
+          this.setState({ pokemons: [...this.state.pokemons, body], totalResults: body.length, error: null });
         }, error => {
           this.setState({ error });
         })
@@ -43,7 +43,7 @@ export default class App extends Component {
     };
 
     render() {
-      const { pokemons, loading, totalResults, page, perPage, error } = this.state;
+      const { pokemons, loading, error } = this.state;
 
       return (
         <div id="body">
@@ -64,13 +64,13 @@ export default class App extends Component {
               </section>
               <section>
                 <br />
-                <Paging
+                <Pokemons pokemons={pokemons} />
+                {/* <Paging
                   totalResults={totalResults}
                   page={page}
                   perPage={perPage}
                   onPage={this.handlePage}
-                />
-                <Pokemons pokemons={pokemons} />
+                /> */}
               </section>
             </main>
           </div>

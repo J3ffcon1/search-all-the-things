@@ -7,12 +7,12 @@ export default class Pokemons extends Component {
   render() {
     //eslint-disable-next-line
     const { pokemons } = this.props;
-
+    console.log('i was here', pokemons);
+    
     return (
       <ul>
-        {/* TODO: create unordered list of individual pokemon */}
         {pokemons.map((pokemon, i) => {
-          <Pokemon key = {i} pokemon={pokemon}/>; //how many results it finds.
+          <Pokemon key={i} pokemon={pokemon}/>; 
         })}
       </ul>
     );
