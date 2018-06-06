@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from '../styles/Paging.css';
-import logo from '../../assets/empty-pokeball.png';
-import closed from '../../assets/closed-pokeball.png';
+// import logo from '../../assets/empty-pokeball.png';
+// import closed from '../../assets/closed-pokeball.png';
 
 
 export default class Paging extends Component {
@@ -18,7 +18,7 @@ export default class Paging extends Component {
     const { totalResults, page, perPage } = this.props;
     const totalPages = Math.ceil(totalResults / perPage);
     
-  if (!totalResults) return ( <div id="results"></div>);
+    if(!totalResults) return (<div id="results"></div>);
 
     return (
       <div className={styles.paging}>

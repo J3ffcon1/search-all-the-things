@@ -18,7 +18,7 @@ export default class Search extends Component {
       // this.totalResults = true;
     };
 
-    refreshPage = event => {
+    refreshPage = () => {
       window.location.reload();
     };
 
