@@ -34,6 +34,7 @@ export default class App extends Component {
         .then(() => this.setState({ loading: false }));
 
     };
+    
 
     handleSearch = ({ search }) => {
       this.setState({ topic: search }, this.searchPokemon);
@@ -52,7 +53,7 @@ export default class App extends Component {
             <div id= "body-container">
               <header>
                 <div className="header-container">
-                  <img src={logo} />
+                  <img src={logo} id = "logo-image" />
                   <h1>Search Pokemon API</h1>
                 </div>
                 <div className="search-container">
@@ -64,9 +65,9 @@ export default class App extends Component {
                   {loading && <div>Loading...</div>}
                   {error && <div>{error.message}</div>}
                 </section>
-                <section>
+                <section id = "list-container">
                   <br />
-                  <Pokemons pokemons={pokemons} />
+                  <Pokemons pokemons={pokemons} id = "pokemon-container"/>
                   <Paging
                     totalResults={totalResults}
                     page={page}

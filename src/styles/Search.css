@@ -1,6 +1,6 @@
 
 
-.search-button { 
+.search-button, .refresh-button { 
   
   /* put the height and width of your image here */
   height: 27px;
@@ -34,7 +34,7 @@ input:focus {
   border: 1px solid #3B4CCA;
 }
 
-.search-button:hover {
+.search-button:hover, .refresh-button:hover {
     background-color: #CC0000;
      transition: all 0.30s ease-in-out;
      -o-transition:.5s;

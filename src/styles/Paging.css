@@ -9,3 +9,30 @@
         padding-left: 30px;
         height: 45px;
     }
+
+    #paging-button {
+    height: 27px;
+     width: 100px;
+    border: none;
+    border: solid #CC0000;
+    background: white;
+    color: black;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    }
+
+    #paging-button:hover {
+    background-color: #CC0000;
+     transition: all 0.30s ease-in-out;
+     -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+}
+
+#page-count {
+    padding-left: 30px;
+}
+ 
+
+    

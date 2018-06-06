@@ -15,6 +15,11 @@ export default class Search extends Component {
       event.preventDefault();
       //eslint-disable-next-line
       this.props.onSearch(this.state);
+      // this.totalResults = true;
+    };
+
+    refreshPage = event => {
+      window.location.reload();
     };
 
     render() {
@@ -26,7 +31,7 @@ export default class Search extends Component {
             Search by name: &nbsp;
             <input value={search} onChange={this.handleChange}/>
           </label>
-          <button className="search-button">Find</button>
+          <button className="search-button">Find</button><button className="refresh-button" onClick={this.refreshPage}>Refresh</button>
         </form>
       );
     
