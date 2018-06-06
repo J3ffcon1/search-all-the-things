@@ -1,3 +1,3 @@
-##Google Books Search Apps##
+##Pokemon API search APP!##
 
-Allow for the searching and viewing of google books.
+Allow for the searching and viewing of pokemon from the Pokemon API database.
