@@ -13,7 +13,7 @@ export default class Pokemons extends Component {
     return (
       <ul>
         {pokemons.map((pokemon, i) => {
-          <Pokemon key={i} pokemon={pokemon}/>; 
+          return <Pokemon key={i} pokemon={pokemon}/>; 
         })}
       </ul>
     );
