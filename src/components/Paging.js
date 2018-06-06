@@ -18,7 +18,7 @@ export default class Paging extends Component {
     const { totalResults, page, perPage } = this.props;
     const totalPages = Math.ceil(totalResults / perPage);
     
-  // if (!totalResults) return ( <div id="results"> <img id="empty" src={closed} /></div>);
+  if (!totalResults) return ( <div id="results"></div>);
 
     return (
       <div className={styles.paging}>
@@ -29,7 +29,6 @@ export default class Paging extends Component {
         <button id = "paging-button" onClick={() => this.handlePage(-1)} disabled={page === 1}>&lt; Prev </button>
         <button id = "paging-button" onClick={() => this.handlePage(+1)} disabled={page === totalPages}>Next &gt;</button>
         <br />
-        <div id="results"> <img id="empty" src={closed} /></div>
       </div>
     );
   }
