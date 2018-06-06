@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from '../styles/Paging.css';
 import logo from '../../assets/empty-pokeball.png';
+import closed from '../../assets/closed-pokeball.png';
 
 
 export default class Paging extends Component {
@@ -14,16 +15,21 @@ export default class Paging extends Component {
   render() {
     //props false-positive.
     //eslint-disable-next-line
-     const { totalResults, page, perPage } = this.props;
-    if(!totalResults) return <div id = "results"> no pokemon found!<img id ="empty" src= {logo}/></div>;
-
+    const { totalResults, page, perPage } = this.props;
     const totalPages = Math.ceil(totalResults / perPage);
+    
+  // if (!totalResults) return ( <div id="results"> <img id="empty" src={closed} /></div>);
+
     return (
-      <div className = {styles.paging}>
-        <span>Page {page} of {totalPages}</span>
-                &nbsp;
-        <button onClick={() => this.handlePage(-1)} disabled={page === 1}>&lt; Prev </button>
-        <button onClick={() => this.handlePage(+1)} disabled={page === totalPages}>Next &gt;</button>
+      <div className={styles.paging}>
+
+      
+        <span id = "page-count">Page {page} of {totalPages}</span>
+        &nbsp;
+        <button id = "paging-button" onClick={() => this.handlePage(-1)} disabled={page === 1}>&lt; Prev </button>
+        <button id = "paging-button" onClick={() => this.handlePage(+1)} disabled={page === totalPages}>Next &gt;</button>
+        <br />
+        <div id="results"> <img id="empty" src={closed} /></div>
       </div>
     );
   }

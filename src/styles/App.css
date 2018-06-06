@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,700,900');
 
+    #poke-ball {
+        height: 30px;
+    }
+
+    #logo-image {
+        align-content: center;
+        height: 300px;
+        opacity: 0.7;
+        
+    }
 
     body {
         background-color: #3B4CCA;
@@ -20,6 +30,30 @@
         box-shadow: 5px 2.5px 2.5px 2.5px black;
     }
 
+    #results {
+        box-shadow: none;
+    }
+
+    ul {
+        background-color: #CC0000;
+         border-bottom-left-radius: 25px;
+         border-bottom-right-radius: 25px;
+   
+    }
+
+    ul, h2, h3 {
+        text-align: left;
+    }
+
+    #list-container h2 {
+        text-align: left;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 900;  
+        color: white;
+        text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+        
+    }
+
     .header-container {  
         text-align: center;
     }
@@ -37,9 +71,3 @@
     }
 
 
-    img {
-        align-content: center;
-        height: 300px;
-        opacity: 0.7;
-        
-    }

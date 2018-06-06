@@ -17,6 +17,7 @@ export function search({ topic }, { page = 1, pageSize = 10 }){
   return get(`${STOCK_URL}${topic}`);
 }
 
+
 // export function allPokemon() => {
 //     //get base_url
 // }
