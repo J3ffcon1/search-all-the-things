@@ -9,11 +9,11 @@ export default class Pokemons extends Component {
     const { pokemons } = this.props;
     //eslint-disable-next-line
     console.log('i was here', pokemons);
-    
+
     return (
       <ul>
         {pokemons.map((pokemon, i) => {
-          return <Pokemon key={i} pokemon={pokemon}/>; 
+          return <Pokemon key={i} pokemon={pokemon} />;
         })}
       </ul>
     );
