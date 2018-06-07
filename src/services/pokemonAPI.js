@@ -7,8 +7,8 @@ const throwJson = json => { throw json; };
 const get = url => fetch(url)
   .then(r => r.ok ? r.json() : r.json().then(throwJson));
 
-export function search({ topic }, { page = 1, pageSize = 10 }){
-//   const search = `${name}`;
+export function search({ topic }, { page = 1, pageSize = 10 }) {
+  //   const search = `${name}`;
   //need paging for parameter variables.
   //eslint-disable-next-line
   const paging = `/?qlimit=${page}&offset=${pageSize}`;
@@ -27,7 +27,7 @@ export function search({ topic }, { page = 1, pageSize = 10 }){
 
 
 // export function search({ topic, sources = ['bad'] }, { page = 1, pageSize = 10 }) {
-    
+
 //     const bookIndex = (page * pageSize) - pageSize;
 //     const search = `&q=${topic}&sources=${sources.join()}`;
 //     const maxResults = `&maxResults=${pageSize}`;

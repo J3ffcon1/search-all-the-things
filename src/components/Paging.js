@@ -17,17 +17,16 @@ export default class Paging extends Component {
     //eslint-disable-next-line
     const { totalResults, page, perPage } = this.props;
     const totalPages = Math.ceil(totalResults / perPage);
-    
-    if(!totalResults) return (<div id="results"></div>);
 
+    // if(!totalResults) return (<div id="results">Could not find that Pokemon!</div>);
     return (
       <div className={styles.paging}>
 
-      
-        <span id = "page-count">Page {page} of {totalPages}</span>
+
+        <span id="page-count">Page {page} of {totalPages}</span>
         &nbsp;
-        <button id = "paging-button" onClick={() => this.handlePage(-1)} disabled={page === 1}>&lt; Prev </button>
-        <button id = "paging-button" onClick={() => this.handlePage(+1)} disabled={page === totalPages}>Next &gt;</button>
+        <button id="paging-button" onClick={() => this.handlePage(-1)} disabled={page === 1}>&lt; Prev </button>
+        <button id="paging-button" onClick={() => this.handlePage(+1)} disabled={page === totalPages}>Next &gt;</button>
         <br />
       </div>
     );
