@@ -3,10 +3,17 @@ const STOCK_URL = 'http://pokeapi.salestock.net/api/v2/pokemon/';
 // const PIKA_URL = `${BASE_URL}/pikachu`;
 // const SORT_QUERY = `sortBy=id`;
 
-const throwJson = json => { throw json; };
-const get = url => fetch(url)
-  .then(r => r.ok ? r.json() : r.json().then(throwJson));
+// const throwJson = json => { throw json; };
+// let get = url => fetch(url)
+//   .then(r => r.ok ? r.json() : r.json().then(throwJson));
 
+const get = url => fetch(url)
+  .then(response => response.json()).then(checkResponseData);
+  
+export function checkResponseData(response) {
+  if(response.Response === 'False') throw response.Error;
+  return response;
+}
 export function search({ topic }, { page = 1, pageSize = 10 }) {
   //   const search = `${name}`;
   //need paging for parameter variables.
@@ -16,7 +23,6 @@ export function search({ topic }, { page = 1, pageSize = 10 }) {
   // return get(`${BASE_URL}${topic}`);
   return get(`${STOCK_URL}${topic}`);
 }
-
 
 // export function allPokemon() => {
 //     //get base_url
